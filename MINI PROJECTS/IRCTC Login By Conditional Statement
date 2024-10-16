@@ -1,0 +1,40 @@
+
+#include <stdio.h>
+#include<string.h>
+int main()
+{ 
+    int count=0;
+    char name[10]="kiran";
+    char pass[10]="kiran123";
+    char cap[10]="A4DJ7b";
+    char uname[10];
+    char password[10];
+    char captcha[10];
+    count:
+    if(count<=3)
+    {printf("\nIRCTC\n");
+    printf("Enter username : ");scanf("%9s",uname);
+    printf("Enter Password : ");scanf("%9s",password);
+    printf("Enter Captcha A4DJ7b : ");scanf("%9s",captcha);
+    
+    if(strcmp(uname,name)==0 && strcmp(password,pass)==0 && strcmp(captcha,cap)==0)
+    {
+        printf("WELCOME TO IRCTC PORTAL");
+        
+    }
+    else {
+        if(strcmp(uname,name)!=0 && strcmp(password,pass)==0 && strcmp(captcha,cap)==0)
+        {printf("\nINVALID USERNAME\n");}
+        else if(strcmp(password,pass)!=0 && strcmp(uname,name)==0 && strcmp(captcha,cap)==0)
+        {printf("\nINVALID PASSWORD\n");}
+        else if(strcmp(captcha,cap)!=0 && strcmp(uname,name)==0 && strcmp(password,pass)==0)
+        {printf("\nINVALID CAPTHA\n");}
+        else printf("INVALID CREDENTIALS\n");
+        printf("Please try again.\n");
+        count++;
+        goto count;    } }
+        
+    
+    
+  return 0;
+} 

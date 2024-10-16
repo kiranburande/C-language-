@@ -1,0 +1,238 @@
+
+
+
+#include <stdio.h>
+
+int bal=2000;
+int main()
+{
+    int choice, damt,wamt;
+    
+  do
+  {
+    
+    printf("\n--------------------------------------------------------------------------------\n");
+    printf("\t\t---- Bank Account Menu ----\n");
+    printf("--------------------------------------------------------------------------------\n");
+     printf("\t\t1. Create Account\n");
+     printf("\t\t2. Deposit Money\n");
+     printf("\t\t3. Withdraw Money\n");
+     printf("\t\t4. Check Balance\n");
+     printf("\t\t5. Exit\n");
+     
+     printf("Enter your choice : ");scanf("%d",&choice);
+     
+     switch(choice)
+     {
+        case 1:  
+               printf("\nAccount created successfully with initial balance of Rs.%d", createaccount(bal));
+                break;
+                
+        case 2:  
+               bal= deposit(bal); break;  
+                 
+                 
+        case 3:  
+                  bal=withdrawal(bal);break;
+        
+                  
+        case 4: bal= checkbalance(bal) ;break;  
+        
+        
+        case 5:  printf("\nThank you for using our banking system.");
+                exit(0);
+                
+        default : printf("\invalid choice");
+                  
+     }
+  }
+  while(choice != 5);
+    
+
+    return 0;
+}
+
+
+int createaccount(int bal)
+{
+    return bal; 
+}
+
+
+int deposit(int bal)
+{
+    int damt;
+    printf("Enter amount to deposit: ");scanf("%d",&damt);
+    
+    if(damt>0)  
+    {
+        bal+=damt;  printf("Rs. %d deposited successfully.\nYour current balance is: Rs. %d",damt,bal);
+        return bal; 
+    }
+    
+    
+    else  { printf("Invalid amount to deposit."); return bal; }
+}
+
+
+int withdrawal(int bal)
+{
+    int wamt;
+    
+     printf("Enter amount to withdraw: ");scanf("%d",&wamt);
+     
+     
+     
+      if(wamt > bal ) { printf("Insufficient Funds."); return bal;}
+     
+     else if(wamt<=0) { printf("Invalid amount to withdraw."); return bal ;}
+     
+     
+    else
+     {
+         bal-=wamt;
+         printf("Rs. %d withdrawn successfully.\nYour current balance is: Rs. %d",wamt,bal);
+         return bal;
+     }
+}
+
+int checkbalance(int bal)
+{
+    printf("Your current balance is: Rs. %d",bal); 
+    return bal;
+}
+
+/*  Que 16 : Develop a C program that simulates a simple bank account system. Users can create accounts, deposit money,
+withdraw money, and check their balances. Implement separate functions for these operations. Take the initial balance as Rs.2000.
+--------
+
+Condition For deposit :
+
+* If the user want to deposit 0 or negetive amount then print "Invalid amount to deposit"
+
+
+Condition For withdraw : 
+
+* If the user want to withdraw 0 or negetive amount then print "Invalid amount to withdrawal"
+
+* If the user given amount is greater than the balance then print "Insufficient Funds"
+
+
+SAMPLE INPUT AND SAMPLE OUTPUT :
+--------------------------------
+
+--- Bank Account Menu ---
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 1
+
+Account created successfully with initial balance of Rs. 2000.
+-------------------------------------------------------
+
+--- Bank Account Menu ---
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 2
+
+Enter amount to deposit: 1500
+
+Rs. 1500 deposited successfully.
+Your current balance is: Rs. 3500
+-------------------------------------------------------
+
+--- Bank Account Menu ---
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 2
+
+Enter amount to deposit: -500
+
+Invalid amount to deposit
+-------------------------------------------------------
+
+--- Bank Account Menu ---
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 3
+
+Enter amount to withdraw: 1000
+
+Rs. 1000 withdrawn successfully.
+Your current balance is: Rs. 2500
+-------------------------------------------------------
+
+--- Bank Account Menu ---
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 3
+
+Enter amount to withdraw: -300
+
+Invalid amount to withdraw
+-------------------------------------------------------
+
+--- Bank Account Menu ---
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 3
+
+Enter amount to withdraw: 3000
+
+Insufficient Funds
+-------------------------------------------------------
+
+--- Bank Account Menu ---
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 4
+
+Your current balance is: Rs. 2500
+-------------------------------------------------------
+
+--- Bank Account Menu ---
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 5
+
+Thank you for using our banking system.     */
+
+
+
+/*
+--- Bank Account Menu ---
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Exit
+Enter your choice: 1  */
+
+
+
+
+
+

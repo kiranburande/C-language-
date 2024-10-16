@@ -1,0 +1,238 @@
+
+#include <stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+    char s[100];int i,n,choice;
+    
+    printf("**************************************************************************\n");
+    printf("\t\t\tString Operation Project\n");
+    printf("**************************************************************************\n");
+    printf("                                                                          \n");
+    
+    printf("1. String Length.\n");
+    printf("2. String Reverse.\n");
+    printf("3. Convert into Lowercase.\n");
+    printf("4. Convert into Uppercase.\n");
+    printf("5. Convert into Capitalize.\n");
+    printf("6. Convert into sentence case.\n");
+    printf("7. Convert into tOGGLE case.\n");
+    printf("8. Find Abbreviation.\n");
+    printf("9. Find Frequency Character.\n");
+    printf("10. Find words in a string.\n");
+    printf("11. String numbers Sum.\n");
+    printf("12. Check Paindrome.\n");
+    printf("13. Exit.\n");
+    
+    printf("Enter Your Choice : ");scanf("%d",&choice);
+    
+    if(choice==0) {printf("Enter Correct choice.");return 0;}
+    if(choice!=13 ) {printf("\nEnter the String :");scanf(" %[^\n]",s);} 
+    
+    switch(choice)
+    {
+        case 1 : { stringlength(s);break;}
+        case 2 : { stringreverse(s);break;}
+        case 3 : { lowercase(s);break;}
+        case 4 : { uppercase(s);break;}
+        case 5 : { capitalize(s);break;}
+        case 6 : { sentencecase(s);break;}
+        case 7 : { togglecase(s);break;}
+        case 8 : { abbreviation(s);break;}
+        case 9 : { frequencychar(s);break;}
+        case 10 : { wordsinstring(s);break;}
+        case 11 : { stringsum(s);break;}
+        case 12 : { palindrome(s);break;}
+        case 13 : { return 0;}
+        default : printf("Enter Correct choice.");
+    }
+    return 0;
+}
+
+void stringlength(char *s)
+{
+    int i;
+    for(i=0;*(s+i)!='\0';i++);
+    
+    printf("String length of given string is :%d",i);
+}
+
+void stringreverse(char *s)
+{
+    int i;
+    printf("String reverse is :");
+    for(i=0;*(s+i)!='\0';i++);
+    for(i--;i>=0;i--)printf("%c",*(s+i));
+}
+
+void lowercase(char *s)
+{
+    int i;
+    for(i=0;*(s+i)!='\0';i++)
+   {    
+       if( *(s+i) >= 'A' && *(s+i) <= 'Z')*(s+i)+=32;
+       
+       printf("%c",*(s+i));
+   }
+   
+}
+
+void uppercase(char *s)
+{
+    int i;
+    for(i=0;*(s+i)!='\0';i++)
+   {    
+       if( *(s+i) >= 'a' && *(s+i) <= 'z')*(s+i)-=32;
+       
+       printf("%c",*(s+i));
+   }
+   
+}
+
+void capitalize(char *s)
+{
+    int i;
+    for (i = 0; s[i] != '\0'; i++)
+    {
+        if (s[i] >= 'A' && s[i] <= 'Z')    s[i] += 32;
+
+        if (s[0] >= 'a' && s[0] <= 'z')    s[0] -= 32;
+        
+    }
+    
+    for(i=0;s[i]!=0;i++)
+    {
+        
+        if(s[i]==' ' && s[i+1]>='a' && s[i+1]<='z')
+        s[i+1]=s[i+1]-32;
+    }
+    
+    printf("%s",s);
+
+}
+
+void sentencecase(char *s)
+{
+    int i;
+    for(i=0;s[i]!='\0';i++)
+    {
+        if(s[i]>='A' && s[i]<='Z')s[i]+=32;
+    }
+    if(s[0]>='a' && s[0]<='z')s[0]-=32;
+    
+    for(i=0;s[i]!='\0';i++)
+    {
+        if(s[i]=='.' && s[i+1]==' ' && s[i+2]>='a' && s[i+2]<='z')s[i+2]-=32;
+    }
+    printf("%s",s);
+}
+
+void togglecase(char *s)
+{
+    int i;
+    for (i = 0; s[i] != '\0'; i++)
+    {
+        if (s[i] >= 'a' && s[i] <= 'z')    s[i] -= 32;
+
+        if (s[0] >= 'A' && s[0] <= 'Z')    s[0] += 32;
+        
+    }
+    
+    for(i=0;s[i]!=0;i++)
+    {
+        
+        if(s[i]==' ' && s[i+1]>='A' && s[i+1]<='Z')
+        s[i+1]=s[i+1]+32;
+    }
+    
+    printf("%s",s); 
+    
+}
+
+void abbreviation(char *s)
+{
+    int i;
+    printf("Abbreviation is : ");
+    if(s[0]!=' ')printf("%c",s[0]);
+    for(i=1;s[i]!='\0';i++)
+    {
+     if(s[i]==' ' && s[i+1]!=' ')printf("%c",s[i+1]);
+    }
+}
+
+void frequencychar(char *s)
+{
+    int i,j,c; int s1[100];
+    
+    for(i=0;s[i]!='\0';i++)
+    {
+        if(s[i]>='A' && s[i]<='Z')s[i]+=32;
+    }
+    for(i=0;s[i]!='\0';i++)
+    {
+        for(j=i+1,c=1;s[j]!='\0';j++)
+        {
+            if(s[i]==s[j]){ s[j]=-1;c++;}
+            s1[i]=c;
+        }
+    }
+    
+   for(i=0;s[i]!='\0';i++) 
+   {
+       if(s[i]!=-1)printf("%c character %d times.\n",s[i],s1[i]);
+   }
+   
+}
+
+void wordsinstring(char *s)
+{
+    int i,c=1;
+     
+  
+    for(i=0 ; s[i]!='\0' ; i++)
+    {
+        if(s[i] == ' ' && s[i+1] != ' ')c++;
+        
+    }
+        if(s[0]==' ')c--;
+         if(i>0 && s[i-1]==' ')c--;
+        if(s[0]=='\0')c--;
+    
+    printf("%d words are in above string.",c);
+}
+ 
+void stringsum(char *s)
+{
+    int i,sum=0;
+    for(i=0;s[i]!='\0';i++)
+    {
+        if(s[i]>='0' && s[i]<='9')sum=sum+(s[i]-48);
+    }
+    printf("The string sum is : %d",sum);
+}
+  
+void palindrome(char *s)
+{
+    int i,j;
+    
+    for(i=0;s[i]!='\0';i++);
+    
+    for(j=0;s[j]!='\0';j++)
+    {
+        if(s[j]>='A' && s[j]<='Z')s[j]+=32;
+        
+        if(s[i-j-1]!=s[j]) 
+        {
+            printf("Given String is not a Palindrome.");
+            return ;
+        }
+    }
+    
+    printf("Given String is a Palindrome.");
+}
+
+
+/*************************************** THANK YOU **********************************************/
+
+                                             /* CREATED BY - KIRAN BURANDE (9359510436) */

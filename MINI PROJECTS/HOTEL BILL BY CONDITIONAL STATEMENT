@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include<conio.h>
+
+int main()
+{
+    int choice,n;
+    char ch;
+    float  amt=0,paid,change;
+    printf("*************************************************************************************");
+    printf("\n\t\t\t* Welcome to our Tea Stall Counter! *\n");
+    printf("*************************************************************************************\n");
+    abc:
+    printf("\n\t\t\t Our menu:\n");
+    printf("\n\t\t1.Tea\t\t\tRs. 10");
+    printf("\n\t\t2.Coffee\t\tRs. 20");
+    printf("\n\t\t3.Cold Coffee\t\tRs. 50");
+    printf("\nEnter your choice :");scanf("%d",&n);
+    {
+       if (n==1){ printf("How many cups of refreshing tea?");scanf("%d",&choice);}
+       else if (n==2){ printf("How many cups of aromatic coffee?");scanf("%d",&choice);}
+       else if(n==3){ printf("How many cups of chilled cold coffee?");scanf("%d",&choice);}
+       else printf("Invalid menu number");
+        
+        if(n==1)  { amt =choice*10;
+            printf("Total for [%d] cup(s): Rs. [%f].",choice,amt);}
+        else if(n==2)  { amt =choice*20;
+            printf("Total for [%d] cup(s): Rs. [%f].",choice,amt);}
+        else if(n==3)  { amt = choice*50;
+            printf("Total for [%d] cup(s): Rs. [%f].",choice,amt);}
+    }  
+    ab:
+      printf( "\nEnter your payment amount: Rs.");scanf("%f",&paid);
+    getch();
+        if(amt>paid){ printf("Your paid amount is not sufficient");goto ab;}
+    else {
+        printf( "\nChange: Rs. [%f].",paid-amt);}
+    printf("\nExplore more or finalize? (Type 'Y' for Yes or 'N' for No):");scanf(" %c",&ch);
+    if(ch=='Y' || ch=='y')
+    goto abc;
+    else if (ch=='n' || ch=='N')
+    printf("\nThank you for visiting! We look forward to serving you again soon!");
+    printf("************************************************************************");
+    return 0;
+} 
